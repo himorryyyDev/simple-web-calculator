@@ -1,6 +1,6 @@
 @font-face {
 	font-family: 'Montserrat';
-	src: url('Montserrat-Thin.woff2') format('woff2');
+	src: url('/assets/fonts/Montserrat-Thin.woff2') format('woff2');
 	font-weight: 100;
 	font-style: normal;
 	font-display: swap;
@@ -8,6 +8,7 @@
 
 :root {
 	--dark-theme: rgb(17, 17, 17);
+	--calc-dark-theme: rgb(80, 80, 80);
 	--light-theme: rgb(238, 238, 238);
 }
 
@@ -19,4 +20,8 @@
 .dark-theme {
 	background-color: var(--dark-theme);
 	color: var(--light-theme);
+}
+
+.calc-dark-theme {
+	background-color: var(--calc-dark-theme);
 }
