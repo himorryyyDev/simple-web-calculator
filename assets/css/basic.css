@@ -5,3 +5,18 @@
 	font-style: normal;
 	font-display: swap;
 }
+
+:root {
+	--dark-theme: rgb(54, 54, 54);
+	--light-theme: rgb(196, 196, 196);
+}
+
+.light-theme {
+	background-color: var(--light-theme);
+	color: var(--dark-theme);
+}
+
+.dark-theme {
+	background-color: var(--dark-theme);
+	color: var(--light-theme);
+}
