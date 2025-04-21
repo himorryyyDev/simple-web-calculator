@@ -7,8 +7,8 @@
 }
 
 :root {
-	--dark-theme: rgb(54, 54, 54);
-	--light-theme: rgb(196, 196, 196);
+	--dark-theme: rgb(17, 17, 17);
+	--light-theme: rgb(238, 238, 238);
 }
 
 .light-theme {
