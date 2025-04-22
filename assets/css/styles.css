@@ -13,16 +13,64 @@ body {
 	font-size: 40px;
 }
 
-.calcBody {
-	width: 400px;
-	height: 500px;
-	padding: 30px;
+.calc-body {
+	width: 500px;
+	height: fit-content;
+	position: relative;
+	margin-top: 60px;
+}
+
+.calc-bkg {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	height: 100%;
+	background-size: cover;
 	filter: blur(6px);
 	opacity: 0.2;
-	border-radius: 20px;
-	margin-top: 60px;
+	z-index: 100;
+	border-radius: 25px;
+}
+
+.calculator-content {
+	position: relative;
+	z-index: 200;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	width: 100%;
+	height: 100%;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+}
+
+.calculator-content h5 {
+	margin-top: -5px;
+	margin-bottom: 10px;
+}
+
+.calculator-display {
+	width: 90%;
+	height: 150px;
+	background-color: black;
+	border-radius: 12px;
+}
+
+.btn-grid {
+	width: 80%;
+	display: grid;
+	grid-template-columns: repeat(4, 82px);
+	grid-template-rows: repeat(4, 82px);
+	margin-top: 20px;
 	gap: 20px;
+	justify-content: center;
+}
+
+button {
+	border-radius: 12px;
+	border: 0px solid black;
+	text-align: center;
+	font-size: 25px;
+	font-weight: 600;
 }

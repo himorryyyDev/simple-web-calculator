@@ -24,4 +24,5 @@
 
 .calc-dark-theme {
 	background-color: var(--calc-dark-theme);
+	color: var(--light-theme);
 }
