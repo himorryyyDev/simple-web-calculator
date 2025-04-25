@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
 	const displayActually = document.querySelector('.actually')
 	const displayHistory = document.querySelector('.history')
-	const clearButton = document.querySelector('.clear-btn')
+	const clearBtn = document.querySelector('.clear-btn')
 	const buttons = document.querySelectorAll('.btn-grid button')
 
 	let currentInput = ''
@@ -9,30 +9,34 @@ document.addEventListener('DOMContentLoaded', () => {
 	let firstNumber = ''
 	let secondNumber = ''
 	let result = ''
+	let expression = '' // Полное выражение
 
 	// Обработчик для всех кнопок
 	buttons.forEach(button => {
 		button.addEventListener('click', () => {
 			const value = button.textContent
 
-			// Обработчик чисел и запятой
+			// Обработка чисел и запятой
 			if (/[0-9]/.test(value) || value === ',') {
 				if (value === ',' && currentInput.includes(',')) return
 				currentInput += value
-				displayActually.textContent = currentInput
+				expression =
+					firstNumber + (operator ? ` ${operator} ` : '') + currentInput
+				displayActually.textContent = expression
 			}
 
-			// Обработчик оператора
+			// Обработка операторов
 			if (['+', '-', 'x', ':'].includes(value)) {
 				if (currentInput !== '') {
 					firstNumber = currentInput
 					operator = value
-					currentInput = ''
-					displayActually.textContent = `${firstNumber} ${operator}`
+					currentInput = '' // Сбрасываем для ввода второго числа
+					expression = `${firstNumber} ${operator}`
+					displayActually.textContent = expression
 				}
 			}
 
-			// Обработка "="
+			// Обработка равно
 			if (value === '=') {
 				if (firstNumber && operator && currentInput) {
 					secondNumber = currentInput
@@ -43,25 +47,28 @@ document.addEventListener('DOMContentLoaded', () => {
 					firstNumber = ''
 					secondNumber = ''
 					operator = ''
+					expression = result
 				}
 			}
 		})
 	})
 
-	// Кнопка очистки
-	clearButton.addEventListener('click', () => {
-		currentInput = ''
+	// Обработчик кнопки очистки
+	clearBtn.addEventListener('click', () => {
 		displayActually.textContent = ''
+		displayHistory.textContent = result
+		expression = ''
 		firstNumber = ''
 		secondNumber = ''
 		operator = ''
 		result = ''
+		currentInput = ''
 	})
 
-	// Вычисление
+	// Функция вычисления
 	function calculate(num1, num2, op) {
-		const nm1 = parseFloat(num1.replace(',', '.'))
-		const nm2 = parseFloat(num2.replace(',', '.'))
+		const n1 = parseFloat(num1.replace(',', '.'))
+		const n2 = parseFloat(num2.replace(',', '.'))
 		let result
 
 		switch (op) {
@@ -75,13 +82,13 @@ document.addEventListener('DOMContentLoaded', () => {
 				result = n1 * n2
 				break
 			case ':':
-				result = n2 !== 0 ? n1 / n1 : 'Error!'
+				result = n2 !== 0 ? n1 / n2 : 'Нельзя делить на 0'
 				break
 			default:
 				return ''
 		}
 
-		// Форматирование result
-		return result.toString().replace(',', '.')
+		// Форматирование результата
+		return result.toString().replace('.', ',')
 	}
 })
