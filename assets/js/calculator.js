@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
 			}
 
 			// Обработка операторов
-			if (['+', '-', 'x', ':'].includes(value)) {
+			if (['+', '-', '·', ':'].includes(value)) {
 				if (currentInput !== '') {
 					firstNumber = currentInput
 					operator = value
@@ -36,18 +36,23 @@ document.addEventListener('DOMContentLoaded', () => {
 				}
 			}
 
-			// Обработка равно
+			// Обработка "="
 			if (value === '=') {
 				if (firstNumber && operator && currentInput) {
 					secondNumber = currentInput
 					result = calculate(firstNumber, secondNumber, operator)
-					displayHistory.textContent = `${firstNumber} ${operator} ${secondNumber}`
-					displayActually.textContent = result
-					currentInput = result
+					if (result === 'Error') {
+						displayActually.textContent = 'Нельзя делить на 0'
+						displayHistory.textContent = 'Error'
+					} else {
+						displayHistory.textContent = `${firstNumber} ${operator} ${secondNumber}`
+						displayActually.textContent = result
+					}
+					currentInput = result === 'Error' ? '' : result
 					firstNumber = ''
 					secondNumber = ''
 					operator = ''
-					expression = result
+					expression = result === 'Error' ? '' : result
 				}
 			}
 		})
@@ -78,15 +83,19 @@ document.addEventListener('DOMContentLoaded', () => {
 			case '-':
 				result = n1 - n2
 				break
-			case 'x':
+			case '·':
 				result = n1 * n2
 				break
 			case ':':
-				result = n2 !== 0 ? n1 / n2 : 'Нельзя делить на 0'
+				if (n2 === 0) return 'Error'
+				result = n1 / n2
 				break
 			default:
 				return ''
 		}
+
+		// Округление
+		result = Math.round(result * 1000) / 1000
 
 		// Форматирование результата
 		return result.toString().replace('.', ',')
