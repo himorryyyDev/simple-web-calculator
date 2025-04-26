@@ -95,7 +95,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		}
 
 		// Округление
-		result = Math.round(result * 1000) / 1000
+		result = Math.round(result * 1000000000) / 1000000000
 
 		// Форматирование результата
 		return result.toString().replace('.', ',')
