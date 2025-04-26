@@ -118,10 +118,13 @@ button {
 	font-weight: 600;
 }
 
-.theme-changer {
+.theme {
 	position: absolute;
-	top: 20px;
-	right: 20px;
+	top: 35px;
+	right: 35px;
+}
+
+.theme-switch {
 	opacity: 0.1;
 	width: 100px;
 	height: 50px;
@@ -135,6 +138,8 @@ button {
 	border: 0px solid black;
 	border-radius: 50%;
 	cursor: pointer;
+	display: flex;
+	align-content: center;
 }
 
 .left-position {
@@ -148,7 +153,6 @@ button {
 	position: absolute;
 	top: 3px;
 	left: 3px;
-	background-color: var(--light-theme);
 }
 
 .right-position {
@@ -162,5 +166,18 @@ button {
 	position: absolute;
 	top: 3px;
 	left: 3px;
-	background-color: var(--dark-theme);
+}
+
+.theme-img {
+	width: 50px;
+	height: 50px;
+	display: flex;
+	align-content: center;
+	scale: 0.5;
+}
+
+.button-theme-img {
+	scale: 0.5;
+	position: relative;
+	left: -4px;
 }
