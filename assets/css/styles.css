@@ -143,13 +143,15 @@ button {
 	cursor: pointer;
 	display: flex;
 	align-content: center;
+	z-index: 100;
+	transition: all 1s ease-in-out;
 }
 
 .left-position {
 	position: absolute;
 	top: 3px;
 	left: 3px;
-	transition: all 1s ease;
+	transition: all 1s ease-in-out;
 }
 
 .left-position-default {
@@ -162,7 +164,7 @@ button {
 	position: absolute;
 	top: 3px;
 	right: 3px;
-	transition: all 1s ease;
+	transition: all 1s ease-in-out;
 }
 
 .right-position-default {
@@ -177,6 +179,8 @@ button {
 	display: flex;
 	align-content: center;
 	scale: 0.5;
+	z-index: 0;
+	transition: all 1s ease-in-out;
 }
 
 .button-theme-img {
