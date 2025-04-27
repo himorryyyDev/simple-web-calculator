@@ -54,6 +54,8 @@ class ThemeSwitcher {
 		this.calcBkg.classList.toggle(this.themes.light, !isDark)
 		this.name.classList.toggle(this.themes.dark, isDark)
 		this.name.classList.toggle(this.themes.light, !isDark)
+		this.switchThemeButton.classList.toggle(this.themes.dark, isDark)
+		this.switchThemeButton.classList.toggle(this.themes.light, !isDark)
 
 		this.buttons.forEach(button => {
 			button.classList.toggle('calc-dark-theme', isDark)
@@ -64,12 +66,7 @@ class ThemeSwitcher {
 			this.stateClasses.rightPosition,
 			isDark
 		)
-		this.switchThemeButton.classList.toggle(
-			this.stateClasses.leftPosition,
-			!isDark
-		)
 		this.themeImage.classList.toggle(this.stateClasses.leftPosition, isDark)
-		this.themeImage.classList.toggle(this.stateClasses.rightPosition, !isDark)
 
 		this.themeImage.src = isDark
 			? './assets/img/sun-light.svg'
@@ -86,17 +83,19 @@ class ThemeSwitcher {
 		localStorage.setItem(this.storageKey, newTheme)
 
 		this.switchThemeButton.classList.toggle(this.stateClasses.rightPosition)
-		this.switchThemeButton.classList.toggle(this.stateClasses.leftPosition)
 		this.themeImage.classList.toggle(this.stateClasses.leftPosition)
-		this.themeImage.classList.toggle(this.stateClasses.rightPosition)
 
-		this.themeImage.src = isDark
-			? './assets/img/moon-light.svg'
-			: './assets/img/sun-light.svg'
-		this.switchThemeButton.querySelector('img').src = isDark
-			? './assets/img/sun-light.svg'
-			: './assets/img/moon-light.svg'
+		// Change images after 0.25 seconds
+		setTimeout(() => {
+			this.themeImage.src = isDark
+				? './assets/img/moon-dark.svg'
+				: './assets/img/sun-light.svg'
+			this.switchThemeButton.querySelector('img').src = isDark
+				? './assets/img/sun-dark.svg'
+				: './assets/img/moon-light.svg'
+		}, 250)
 
+		// Change theme after 0.25 seconds
 		setTimeout(() => {
 			this.body.classList.toggle(this.themes.dark)
 			this.body.classList.toggle(this.themes.light)
@@ -108,12 +107,14 @@ class ThemeSwitcher {
 			this.calcBkg.classList.toggle(this.themes.light)
 			this.name.classList.toggle(this.themes.dark)
 			this.name.classList.toggle(this.themes.light)
+			this.switchThemeButton.classList.toggle(this.themes.dark)
+			this.switchThemeButton.classList.toggle(this.themes.light)
 
 			this.buttons.forEach(button => {
 				button.classList.toggle('calc-dark-theme')
 				button.classList.toggle('calc-light-theme')
 			})
-		}, 500)
+		}, 250)
 	}
 
 	bindEvents() {

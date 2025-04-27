@@ -38,7 +38,6 @@ body {
 .calculator-content {
 	position: relative;
 	z-index: 200;
-	padding-top: 20px;
 	padding-bottom: 20px;
 	width: 100%;
 	height: 100%;
@@ -48,8 +47,8 @@ body {
 }
 
 .calculator-content h5 {
-	margin-top: -5px;
-	margin-bottom: 10px;
+	margin-top: 27px;
+	margin-bottom: 12px;
 }
 
 .calculator-display {
@@ -65,6 +64,7 @@ body {
 	font-size: 40px;
 	font-weight: 900;
 	overflow: hidden;
+	margin-left: 18px;
 }
 
 .actually,
@@ -110,6 +110,7 @@ body {
 	margin-top: 20px;
 	gap: 20px;
 	justify-content: center;
+	margin-left: 18px;
 }
 
 button {
@@ -143,34 +144,15 @@ button {
 	cursor: pointer;
 	display: flex;
 	align-content: center;
+	position: absolute;
+	top: 3px;
+	left: 3px;
 	z-index: 100;
-	transition: all 1s ease-in-out;
+	transition: transform 0.5s ease-in-out;
 }
 
-.left-position {
-	position: absolute;
-	top: 3px;
-	left: 3px;
-	transition: all 1s ease-in-out;
-}
-
-.left-position-default {
-	position: absolute;
-	top: 3px;
-	left: 3px;
-}
-
-.right-position {
-	position: absolute;
-	top: 3px;
-	right: 3px;
-	transition: all 1s ease-in-out;
-}
-
-.right-position-default {
-	position: absolute;
-	top: 3px;
-	right: 3px;
+.theme-button.right-position {
+	transform: translateX(49px);
 }
 
 .theme-img {
@@ -179,8 +161,15 @@ button {
 	display: flex;
 	align-content: center;
 	scale: 0.5;
+	position: absolute;
+	top: 3px;
+	right: 3px;
 	z-index: 0;
-	transition: all 1s ease-in-out;
+	transition: transform 0.5s ease-in-out;
+}
+
+.theme-img.left-position {
+	transform: translateX(-100px);
 }
 
 .button-theme-img {
