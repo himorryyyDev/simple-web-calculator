@@ -39,11 +39,18 @@ class ThemeSwitcher {
 	}
 
 	get isDarkThemeCached() {
-		return localStorage.getItem(this.storageKey) === this.themes.dark
+		const storedTheme = localStorage.getItem(this.storageKey)
+		// Default to dark theme if no theme is stored
+		return storedTheme === null ? true : storedTheme === this.themes.dark
 	}
 
 	setInitialTheme() {
 		const isDark = this.isDarkThemeCached
+		// Set initial theme in localStorage if not set
+		if (!localStorage.getItem(this.storageKey)) {
+			localStorage.setItem(this.storageKey, this.themes.dark)
+		}
+
 		this.body.classList.toggle(this.themes.dark, isDark)
 		this.body.classList.toggle(this.themes.light, !isDark)
 		this.themeSwitch.classList.toggle(this.themes.dark, isDark)
@@ -70,10 +77,10 @@ class ThemeSwitcher {
 
 		this.themeImage.src = isDark
 			? './assets/img/sun-light.svg'
-			: './assets/img/moon-light.svg'
+			: './assets/img/moon-dark.svg'
 		this.switchThemeButton.querySelector('img').src = isDark
 			? './assets/img/moon-light.svg'
-			: './assets/img/sun-light.svg'
+			: './assets/img/sun-dark.svg'
 	}
 
 	toggleTheme() {
