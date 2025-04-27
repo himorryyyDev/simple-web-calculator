@@ -32,6 +32,7 @@ body {
 	opacity: 0.2;
 	z-index: 100;
 	border-radius: 25px;
+	border: 10px solid var(--dark-theme);
 }
 
 .calculator-content {
@@ -86,6 +87,7 @@ body {
 
 .actually {
 	margin-top: -10px;
+	color: var(--light-theme);
 }
 
 .clear-btn {
@@ -130,6 +132,7 @@ button {
 	height: 50px;
 	padding: 3px;
 	border-radius: 28px;
+	filter: invert(1);
 }
 
 .theme-button {
@@ -165,7 +168,7 @@ button {
 .right-position-default {
 	position: absolute;
 	top: 3px;
-	left: 3px;
+	right: 3px;
 }
 
 .theme-img {
