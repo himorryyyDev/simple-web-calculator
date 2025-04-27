@@ -10,6 +10,7 @@
 	--dark-theme: rgb(17, 17, 17);
 	--calc-dark-theme: rgb(80, 80, 80);
 	--light-theme: rgb(238, 238, 238);
+	--calc-light-theme: rgb(160, 160, 160);
 }
 
 .light-theme {
@@ -24,5 +25,10 @@
 
 .calc-dark-theme {
 	background-color: var(--calc-dark-theme);
+	color: var(--light-theme);
+}
+
+.calc-light-theme {
+	background-color: var(--calc-light-theme);
 	color: var(--light-theme);
 }

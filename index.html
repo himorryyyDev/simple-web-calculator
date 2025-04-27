@@ -15,9 +15,9 @@
 			crossorigin
 		/>
 		<script src="./assets/js/calculator.js" defer></script>
+		<script src="./assets/js/theme-switcher.js" defer></script>
 	</head>
 	<body class="dark-theme">
-		<!-- light-theme -->
 		<h1 class="name">himorryyyDev</h1>
 		<section class="calc-body">
 			<div class="calc-bkg calc-dark-theme"></div>
@@ -51,10 +51,22 @@
 				</div>
 			</div>
 		</section>
-		<div class="theme-changer light-theme">
+		<section class="theme">
+			<div class="theme-switch dark-theme"></div>
 			<div class="theme-container">
-				<button class="theme-button right-position dark-theme"></button>
+				<button class="theme-button right-position dark-theme">
+					<img
+						class="button-theme-img"
+						src="./assets/img/moon-light.svg"
+						alt=""
+					/>
+				</button>
+				<img
+					class="theme-img left-position"
+					src="./assets/img/sun-light.svg"
+					alt=""
+				/>
 			</div>
-		</div>
+		</section>
 	</body>
 </html>

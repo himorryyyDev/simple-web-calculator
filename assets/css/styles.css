@@ -32,12 +32,12 @@ body {
 	opacity: 0.2;
 	z-index: 100;
 	border-radius: 25px;
+	border: 10px solid var(--dark-theme);
 }
 
 .calculator-content {
 	position: relative;
 	z-index: 200;
-	padding-top: 20px;
 	padding-bottom: 20px;
 	width: 100%;
 	height: 100%;
@@ -47,8 +47,8 @@ body {
 }
 
 .calculator-content h5 {
-	margin-top: -5px;
-	margin-bottom: 10px;
+	margin-top: 27px;
+	margin-bottom: 12px;
 }
 
 .calculator-display {
@@ -64,6 +64,7 @@ body {
 	font-size: 40px;
 	font-weight: 900;
 	overflow: hidden;
+	margin-left: 18px;
 }
 
 .actually,
@@ -86,6 +87,7 @@ body {
 
 .actually {
 	margin-top: -10px;
+	color: var(--light-theme);
 }
 
 .clear-btn {
@@ -108,6 +110,7 @@ body {
 	margin-top: 20px;
 	gap: 20px;
 	justify-content: center;
+	margin-left: 18px;
 }
 
 button {
@@ -118,15 +121,19 @@ button {
 	font-weight: 600;
 }
 
-.theme-changer {
+.theme {
 	position: absolute;
-	top: 20px;
-	right: 20px;
+	top: 35px;
+	right: 35px;
+}
+
+.theme-switch {
 	opacity: 0.1;
 	width: 100px;
 	height: 50px;
 	padding: 3px;
 	border-radius: 28px;
+	filter: invert(1);
 }
 
 .theme-button {
@@ -135,32 +142,38 @@ button {
 	border: 0px solid black;
 	border-radius: 50%;
 	cursor: pointer;
-}
-
-.left-position {
+	display: flex;
+	align-content: center;
 	position: absolute;
 	top: 3px;
 	left: 3px;
-	transition: all 1s ease;
+	z-index: 100;
+	transition: transform 0.5s ease-in-out;
 }
 
-.left-position-default {
-	position: absolute;
-	top: 3px;
-	left: 3px;
-	background-color: var(--light-theme);
+.theme-button.right-position {
+	transform: translateX(49px);
 }
 
-.right-position {
+.theme-img {
+	width: 50px;
+	height: 50px;
+	display: flex;
+	align-content: center;
+	scale: 0.5;
 	position: absolute;
 	top: 3px;
 	right: 3px;
-	transition: all 1s ease;
+	z-index: 0;
+	transition: transform 0.5s ease-in-out;
 }
 
-.right-position-default {
-	position: absolute;
-	top: 3px;
-	left: 3px;
-	background-color: var(--dark-theme);
+.theme-img.left-position {
+	transform: translateX(-100px);
+}
+
+.button-theme-img {
+	scale: 0.5;
+	position: relative;
+	left: -4px;
 }
